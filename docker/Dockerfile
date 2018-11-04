@@ -12,3 +12,5 @@ RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
 RUN chmod -R 0755 /var/www/html/moodle
 RUN service apache2 restart
+RUN service apache2 status
+
