@@ -14,4 +14,3 @@ RUN chmod -R 777 /var/moodledata
 RUN chmod -R 0755 /var/www/html/moodle
 EXPOSE 80
 CMD apachectl -D FOREGROUND
-
