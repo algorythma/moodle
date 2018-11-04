@@ -5,7 +5,8 @@ RUN apt-get install -y graphviz aspell ghostscript clamav php7.0-pspell php7.0-c
 COPY . /var/www/html/moodle/
 COPY ./docker/certificates/apache.crt /etc/ssl/certs/apache.crt
 COPY ./docker/certificates/apache.key /etc/ssl/certs/apache.key
-RUN ls /var/www/html/moodle/
+COPY ./conf-files/apache2.conf  /etc/apache2
+RUN ls /etc/apache2/
 RUN mkdir /var/moodledata
 RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
