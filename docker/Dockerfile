@@ -11,5 +11,4 @@ RUN mkdir /var/moodledata
 RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
 RUN chmod -R 0755 /var/www/html/moodle
-EXPOSE 80
-EXPOSE 443
+RUN service apache2 restart
