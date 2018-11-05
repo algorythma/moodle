@@ -13,10 +13,11 @@ RUN mkdir /var/moodledata
 RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
 RUN chmod -R 0755 /var/www/html/moodle
-EXPOSE 80
 CMD a2enmod ssl
 CMD a2enmod headers
 CMD a2ensite default-ssl
 CMD apache2ctl configtest
 CMD apache2 reload
 CMD apachectl -D FOREGROUND
+EXPOSE 80
+EXPOSE 443
