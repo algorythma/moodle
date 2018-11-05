@@ -5,8 +5,8 @@ RUN apt-get install -y graphviz aspell ghostscript clamav php7.0-pspell php7.0-c
 RUN apt-get install -y apache2
 COPY . /var/www/html/moodle/
 RUN mkdir -p /etc/apache2/ssl
-COPY ./docker/certificates/apache.crt /etc/apache2/ssl/apache.crt
-COPY ./docker/certificates/apache.key /etc/apache2/ssl/apache.key
+COPY ./docker/certificates/apache1.crt /etc/apache2/ssl/apache.crt
+COPY ./docker/certificates/apache1.key /etc/apache2/ssl/apache.key
 RUN ls /etc/apache2/ssl/
 COPY ./conf-files/apache2.conf  /etc/apache2/apache2.conf
 COPY ./conf-files/default-ssl.conf  /etc/apache2/sites-available/default-ssl.conf
