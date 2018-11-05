@@ -20,10 +20,8 @@ RUN cat /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir /var/moodledata
 RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
-RUN chmod -R 0755 /var/www/html/moodle
+RUN chmod -R 0777 /var/www/html/moodle
 RUN a2enmod ssl
 RUN a2enmod headers
 RUN a2ensite default-ssl.conf
-CMD service apache2 restart
-CMD service apache2 status
 CMD apachectl -D FOREGROUND
