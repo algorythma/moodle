@@ -6,9 +6,11 @@ RUN apt-get install -y apache2 && apt-get clean
 COPY . /var/www/html/moodle/
 COPY ./docker/certificates/moodle-selfsigned.crt /etc/ssl/certs/moodle-selfsigned.crt
 COPY ./docker/certificates/moodle-selfsigned.key /etc/ssl/private/moodle-selfsigned.key
-COPY ./conf-files/apache2.conf  /etc/apache2
+COPY ./conf-files/apache2.conf  /etc/apache2/apache2.conf
 COPY ./conf-files/default-ssl.conf  /etc/apache2/sites-available/default-ssl.conf
 RUN ls /etc/apache2/
+RUN ls /etc/ssl/certs/
+RUN ls /etc/ssl/private/
 RUN mkdir /var/moodledata
 RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
@@ -17,7 +19,6 @@ CMD a2enmod ssl
 CMD a2enmod headers
 CMD a2ensite default-ssl
 CMD apache2ctl configtest
-CMD apache2 reload
 CMD apachectl -D FOREGROUND
 EXPOSE 80
 EXPOSE 443
