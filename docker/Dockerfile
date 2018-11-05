@@ -3,7 +3,7 @@ RUN apt-get update -y
 RUN apt-get install -y mysql-client php7.0 libapache2-mod-php7.0
 RUN apt-get install -y graphviz aspell ghostscript clamav php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring
 RUN apt-get install -y apache2
-COPY . /var/www/html/moodle/
+#COPY . /var/www/html/moodle/
 RUN mkdir -p /etc/apache2/ssl
 COPY ./docker/certificates/apache1.crt /etc/apache2/ssl/apache.crt
 COPY ./docker/certificates/apache1.key /etc/apache2/ssl/apache.key
@@ -17,10 +17,10 @@ RUN cat /etc/apache2/ssl/apache.key
 RUN cat /etc/apache2/ssl/apache.crt
 RUN ls -ltr /etc/apache2/sites-enabled/
 RUN cat /etc/apache2/sites-available/default-ssl.conf
-RUN mkdir /var/moodledata
-RUN chown -R www-data /var/moodledata
-RUN chmod -R 777 /var/moodledata
-RUN chmod -R 0755 /var/www/html/moodle
+#RUN mkdir /var/moodledata
+#RUN chown -R www-data /var/moodledata
+#RUN chmod -R 777 /var/moodledata
+#RUN chmod -R 0755 /var/www/html/moodle
 RUN a2enmod ssl
 RUN service apache2 restart
 RUN a2enmod headers
