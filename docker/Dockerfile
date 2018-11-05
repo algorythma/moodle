@@ -3,6 +3,8 @@ RUN apt-get update -y
 RUN apt-get install -y mysql-client php7.0 libapache2-mod-php7.0
 RUN apt-get install -y graphviz aspell ghostscript clamav php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring
 RUN apt-get install -y apache2
+RUN service apache2 restart
+RUN service apache2 status
 #COPY . /var/www/html/moodle/
 RUN mkdir -p /etc/apache2/ssl
 COPY ./docker/certificates/apache.crt /etc/apache2/ssl
