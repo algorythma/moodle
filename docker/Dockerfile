@@ -27,4 +27,5 @@ RUN a2ensite default-ssl.conf
 RUN apache2ctl configtest
 RUN service apache2 restart
 RUN service apache2 status
+RUN journalctl -xe
 CMD apachectl -D FOREGROUND
