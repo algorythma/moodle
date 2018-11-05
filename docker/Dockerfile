@@ -13,6 +13,8 @@ COPY ./conf-files/default-ssl.conf  /etc/apache2/sites-available/default-ssl.con
 WORKDIR /etc/apache2/sites-enabled
 RUN ln -s ../sites-available/default-ssl.conf default-ssl.conf
 WORKDIR /
+RUN cat /etc/apache2/ssl/apache.key
+RUN cat /etc/apache2/ssl/apache.crt
 RUN ls -ltr /etc/apache2/sites-enabled/
 RUN cat /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir /var/moodledata
