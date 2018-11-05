@@ -10,6 +10,7 @@ COPY ./docker/certificates/apache.key /etc/apache2/ssl/apache.key
 RUN ls /etc/apache2/ssl/
 COPY ./conf-files/apache2.conf  /etc/apache2/apache2.conf
 COPY ./conf-files/default-ssl.conf  /etc/apache2/sites-available/default-ssl.conf
+RUN ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
 RUN ls -ltr /etc/apache2/sites-enabled/
 RUN cat /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir /var/moodledata
