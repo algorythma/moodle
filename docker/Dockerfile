@@ -8,6 +8,7 @@ COPY ./docker/certificates/moodle-selfsigned.crt /etc/ssl/certs/moodle-selfsigne
 COPY ./docker/certificates/moodle-selfsigned.key /etc/ssl/private/moodle-selfsigned.key
 COPY ./conf-files/apache2.conf  /etc/apache2/apache2.conf
 COPY ./conf-files/default-ssl.conf  /etc/apache2/sites-available/default-ssl.conf
+COPY ./conf-files/000-default.conf  /etc/apache2/sites-available/000-default.conf
 RUN ls /etc/apache2/
 RUN ls /etc/ssl/certs/
 RUN ls /etc/ssl/private/
