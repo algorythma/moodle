@@ -22,10 +22,11 @@ RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
 RUN chmod -R 0755 /var/www/html/moodle
 RUN a2enmod ssl
+RUN service apache2 restart
 RUN a2enmod headers
 RUN a2ensite default-ssl.conf
 RUN apache2ctl configtest
 RUN service apache2 restart
-RUN service apache2 status
 RUN journalctl -xe
+RUN service apache2 status
 CMD apachectl -D FOREGROUND
