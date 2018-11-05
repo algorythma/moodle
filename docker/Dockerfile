@@ -24,5 +24,6 @@ RUN chmod -R 0755 /var/www/html/moodle
 RUN a2enmod ssl
 RUN a2enmod headers
 RUN a2ensite default-ssl.conf
+CMD service apache2 restart
+CMD service apache2 status
 CMD apachectl -D FOREGROUND
-
