@@ -10,17 +10,19 @@ COPY ./docker/certificates/apache.key /etc/apache2/ssl/apache.key
 RUN ls /etc/apache2/ssl/
 COPY ./conf-files/apache2.conf  /etc/apache2/apache2.conf
 COPY ./conf-files/default-ssl.conf  /etc/apache2/sites-available/default-ssl.conf
-RUN ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
+WORKDIR /etc/apache2/sites-enabled
+RUN ln -s ../sites-available/default-ssl.conf default-ssl.conf
+WORKDIR /
 RUN ls -ltr /etc/apache2/sites-enabled/
 RUN cat /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir /var/moodledata
 RUN chown -R www-data /var/moodledata
 RUN chmod -R 777 /var/moodledata
 RUN chmod -R 0755 /var/www/html/moodle
-CMD a2enmod ssl
-CMD a2enmod headers
-CMD a2ensite default-ssl.conf
-CMD apache2ctl configtest
-CMD service apache2 restart
-CMD service apache2 status
+RUN a2enmod ssl
+RUN a2enmod headers
+RUN a2ensite default-ssl.conf
+RUN apache2ctl configtest
+RUN service apache2 restart
+RUN service apache2 status
 CMD apachectl -D FOREGROUND
