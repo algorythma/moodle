@@ -23,9 +23,8 @@ RUN cat /etc/apache2/sites-available/default-ssl.conf
 #RUN chmod -R 0755 /var/www/html/moodle
 RUN a2enmod ssl
 RUN service apache2 restart
-RUN a2enmod headers
+#RUN a2enmod headers
 RUN a2ensite default-ssl.conf
-RUN apache2ctl configtest
 RUN service apache2 restart
 RUN journalctl -xe
 RUN service apache2 status
